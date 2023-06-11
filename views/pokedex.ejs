@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="../public/images/favicon.png" />
+    <link rel="stylesheet" href="../public/stylesheets/pokedexstyle.css" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>Pokédex</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <a href="/"><img src="../public/images/pokedle-logo.png" /></a>
+      </div>
+      <h1><%= name %>'s Pokédex</h1>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module">
+      import { pokemons } from "../public/js/pokemon.js";
+      axios
+        .get(`/pokedex/<%= id %>/get`)
+        .then((response) => {
+          var container = document.querySelector(".container");
+          var div = document.createElement("DIV");
+          for (var i = 0; i < pokemons.length; i++) {
+            var pokemonDiv = document.createElement("DIV");
+            pokemonDiv.setAttribute("id", pokemons[i]);
+            pokemonDiv.setAttribute("class", "pokemon-not-guessed");
+            pokemonDiv.innerHTML =
+              "<b>#" +
+              (i + 1) +
+              "</b>" +
+              "<img src='../public/images/sprites/" +
+              pokemons[i] +
+              ".png' width='100px' height='100px'>" +
+              "<p>" +
+              pokemons[i] +
+              "</p><p>Guessed: 0 times</p>";
+            div.appendChild(pokemonDiv);
+          }
+          container.insertAdjacentElement("beforeend", div);
+          var array = response.data;
+          for (var i = 0; i < array.length; i++) {
+            div = document.getElementById(array[i].pokemon);
+            div.setAttribute("class", "pokemon-guessed");
+            // extracting id
+            var string = div.innerHTML;
+            var stuff = string.split(">");
+            var extractedID = stuff[1].substring(0, stuff[1].length - 3);
+            div.innerHTML =
+              "<b>" +
+              extractedID +
+              "</b>" +
+              "<img src='../public/images/sprites/" +
+              array[i].pokemon +
+              ".png' width='100px' height='100px'>" +
+              "<p>" +
+              array[i].pokemon +
+              "</p><p>Guessed: " +
+              array[i].timesGuessed +
+              " times</p>";
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>

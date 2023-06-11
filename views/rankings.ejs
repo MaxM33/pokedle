@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="../public/images/favicon.png" />
+    <link rel="stylesheet" href="../public/stylesheets/style.css" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>Rankings</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <a href="/"><img src="../public/images/pokedle-logo.png" /></a>
+      </div>
+      <div id="subtitle">
+        <h1>TOP 10 PLAYERS</h1>
+      </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var div = document.getElementById("subtitle");
+      axios.get("/rankings/get").then((response) => {
+        for (var i = 1; i <= response.data.length - 1; i++) {
+          div.insertAdjacentHTML(
+            "beforeend",
+            "<b>" +
+              i +
+              ". " +
+              "<a href='/profile/" +
+              response.data[i].id +
+              "'>" +
+              response.data[i].name +
+              "</a></b> - " +
+              response.data[i].wins +
+              " wins<br />"
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
