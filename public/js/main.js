@@ -139,7 +139,7 @@ if ("serviceWorker" in navigator) {
 
 Notification.requestPermission((permission) => {
   if (permission != "granted") {
-    console.error("Permission for notifications was not granted.");
+    console.log("Permission for notifications was not granted.");
   } else {
     console.log("Notifications enabled.");
   }
