@@ -102,10 +102,7 @@ class AppState {
     var menucontainer = document.getElementById("answer-container");
     var menuoption = document.createElement("DIV");
     menuoption.setAttribute("class", "answer");
-    menuoption.innerHTML =
-      "<img src='../public/images/sprites/" +
-      guess[0].name +
-      ".png' width='100px' height='100px'>";
+    menuoption.innerHTML = `<img src='../public/images/sprites/${guess[0].name}.png' width='100px' height='100px'>`;
     for (var prop in guess[1]) {
       if (
         Object.hasOwnProperty.call(guess[1], prop) &&
@@ -114,7 +111,7 @@ class AppState {
       ) {
         var card = document.createElement("DIV");
         card.setAttribute("class", guess[1][prop]);
-        card.innerHTML = "<p>" + guess[0][prop] + "</p>";
+        card.innerHTML = `<p>${guess[0][prop]}</p>`;
         menuoption.appendChild(card);
       }
     }
@@ -265,14 +262,10 @@ function onVictory(tries, pokename) {
   audio.volume = 0.1;
   audio.play();
   setTimeout(() => {
-    div.innerHTML =
-      "<div><br><br><br><br><b>Congratulazioni!</b><br><br><br><br></div><div><b>Era proprio " +
-      pokename +
-      "!</b></div><div><img src='../public/images/sprites/" +
-      pokename +
-      ".png' width='200px' height='200px'></div><div><br><br><b>E ci sei riuscito in " +
-      tries.toString() +
-      " tentativo/i</b></div><div><br><br><b>Pensi di poter fare di meglio? Scopriamolo!</b><br><br></div><div><br><a href='/'><button class='victory-button'>Continua</button></a></div>";
+    div.innerHTML = `<div><br><br><br><br><b>Congratulazioni!</b><br><br><br><br></div>
+    <div><b>Era proprio ${pokename}!</b></div><div><img src='../public/images/sprites/${pokename}.png' width='200px' height='200px'>
+    </div><div><br><br><b>E ci sei riuscito in ${tries} tentativo/i</b></div><div><br><br><b>Pensi di poter fare di meglio? Scopriamolo!</b>
+    <br><br></div><div><br><a href='/'><button class='victory-button'>Continua</button></a></div>`;
   }, 1500);
 }
 
@@ -305,16 +298,13 @@ function autocomplete(inp, arr) {
       if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
         b = document.createElement("DIV");
         b.className = "list-option";
-        b.innerHTML =
-          "<img src='../public/images/sprites/" +
-          arr[i] +
-          ".png' width='60px' height='60px'>";
-        b.innerHTML +=
-          "<strong>" +
-          arr[i].substr(0, val.length) +
-          "</strong>" +
-          arr[i].substr(val.length);
-        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+        b.innerHTML = `<img src='../public/images/sprites/${
+          arr[i]
+        }.png' width='60px' height='60px'>
+          <strong>${arr[i].substr(0, val.length)}</strong>${arr[i].substr(
+          val.length
+        )}
+      <input type='hidden' value='${arr[i]}'>`;
         b.addEventListener("click", function (e) {
           inp.value = this.getElementsByTagName("input")[0].value;
           closeAllLists();

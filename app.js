@@ -100,7 +100,7 @@ app.get("/rankings", (req, res) => {
 });
 
 // getting from db the top 10 users ordered descendingly by wins
-app.get("/rankings/get", async (req, res) => {
+app.get("/rankings/view", async (req, res) => {
   var userRef = Firestore.collection(db, "users");
   const q = Firestore.query(
     userRef,
@@ -211,6 +211,7 @@ app.put("/id/:id", async (req, res) => {
     // update the document
     var userRef = Firestore.doc(db, "users", req.params.id);
     Firestore.setDoc(userRef, answer);
+    // end request-response cycle
     res.status(200).end();
   } else {
     res.status(404).end();

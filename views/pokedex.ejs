@@ -3,6 +3,11 @@
   <head>
     <link rel="icon" href="../public/images/favicon.png" />
     <link rel="stylesheet" href="../public/stylesheets/pokedexstyle.css" />
+    <link
+      rel="manifest"
+      type="application/manifest+json"
+      href="../app.webmanifest"
+    />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <title>Pokédex</title>
   </head>
@@ -25,16 +30,12 @@
             var pokemonDiv = document.createElement("DIV");
             pokemonDiv.setAttribute("id", pokemons[i]);
             pokemonDiv.setAttribute("class", "pokemon-not-guessed");
-            pokemonDiv.innerHTML =
-              "<b>#" +
-              (i + 1) +
-              "</b>" +
-              "<img src='../public/images/sprites/" +
-              pokemons[i] +
-              ".png' width='100px' height='100px'>" +
-              "<p>" +
-              pokemons[i] +
-              "</p><p>Guessed: 0 times</p>";
+            pokemonDiv.innerHTML = `<b># ${i + 1}</b>
+              <img src='../public/images/sprites/${
+                pokemons[i]
+              }.png' width='100px' height='100px'>
+              <p>${pokemons[i]}</p>
+              <p>Guessed: 0 times</p>`;
             div.appendChild(pokemonDiv);
           }
           container.insertAdjacentElement("beforeend", div);
@@ -46,18 +47,10 @@
             var string = div.innerHTML;
             var stuff = string.split(">");
             var extractedID = stuff[1].substring(0, stuff[1].length - 3);
-            div.innerHTML =
-              "<b>" +
-              extractedID +
-              "</b>" +
-              "<img src='../public/images/sprites/" +
-              array[i].pokemon +
-              ".png' width='100px' height='100px'>" +
-              "<p>" +
-              array[i].pokemon +
-              "</p><p>Guessed: " +
-              array[i].timesGuessed +
-              " times</p>";
+            div.innerHTML = `<b>${extractedID}</b>
+              <img src='../public/images/sprites/${array[i].pokemon}.png' width='100px' height='100px'>
+              <p>${array[i].pokemon}</p>
+              <p>Guessed: ${array[i].timesGuessed} times</p>`;
           }
         })
         .catch(function (error) {

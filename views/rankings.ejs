@@ -3,6 +3,11 @@
   <head>
     <link rel="icon" href="../public/images/favicon.png" />
     <link rel="stylesheet" href="../public/stylesheets/style.css" />
+    <link
+      rel="manifest"
+      type="application/manifest+json"
+      href="../app.webmanifest"
+    />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <title>Rankings</title>
   </head>
@@ -18,20 +23,11 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       var div = document.getElementById("subtitle");
-      axios.get("/rankings/get").then((response) => {
+      axios.get("/rankings/view").then((response) => {
         for (var i = 1; i <= response.data.length - 1; i++) {
           div.insertAdjacentHTML(
             "beforeend",
-            "<b>" +
-              i +
-              ". " +
-              "<a href='/profile/" +
-              response.data[i].id +
-              "'>" +
-              response.data[i].name +
-              "</a></b> - " +
-              response.data[i].wins +
-              " wins<br />"
+            `<b>${i}. <a href='/profile/${response.data[i].id}'>${response.data[i].name}</a></b> - ${response.data[i].wins} wins<br />`
           );
         }
       });
