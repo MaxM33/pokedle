@@ -55,6 +55,7 @@ h1 {
   background-color: blanchedalmond;
   border-radius: 36px;
   margin-bottom: 20px;
+  animation: fadeIn 1s;
 }
 
 .pokemon-guessed {
@@ -66,6 +67,7 @@ h1 {
   background-color: #9dda77;
   border-radius: 36px;
   margin-bottom: 20px;
+  animation: fadeIn 1s;
 }
 
 b {
@@ -85,4 +87,13 @@ p {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 1rem;
   font-weight: 600;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
