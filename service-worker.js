@@ -3,6 +3,7 @@ const STATIC_CACHE_URLS = [
   "/views/offline.html",
   "/public/images/favicon.png",
   "/public/stylesheets/style.css",
+  "/public/stylesheets/pokedexstyle.css",
   "/public/images/pokedle-logo.webp",
   "/public/images/background.webp",
 ];
