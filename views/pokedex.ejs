@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="it">
   <head>
-    <link rel="icon" href="../public/images/favicon.png" />
-    <link rel="stylesheet" href="../public/stylesheets/pokedexstyle.css" />
+    <link rel="icon" href="../../public/images/favicon.png" />
+    <link rel="stylesheet" href="../../public/stylesheets/pokedexstyle.css" />
     <link
       rel="manifest"
       type="application/manifest+json"
-      href="../app.webmanifest"
+      href="../../app.webmanifest"
     />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <title>Pokédex</title>
@@ -14,15 +14,17 @@
   <body>
     <div class="container">
       <div class="logo">
-        <a href="/"><img alt="" src="../public/images/pokedle-logo.webp" /></a>
+        <a href="/"
+          ><img alt="" src="../../public/images/pokedle-logo.webp"
+        /></a>
       </div>
       <h1><%= name %>'s Pokédex</h1>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module">
-      import { pokemons } from "../public/js/pokemon.js";
+      import { pokemons } from "../../public/js/pokemon.js";
       axios
-        .get(`/pokedex/<%= id %>/get`)
+        .get(`/profile/<%= id %>/pokedex/view`)
         .then((response) => {
           var container = document.querySelector(".container");
           var div = document.createElement("DIV");
@@ -31,7 +33,7 @@
             pokemonDiv.setAttribute("id", pokemons[i]);
             pokemonDiv.setAttribute("class", "pokemon-not-guessed");
             pokemonDiv.innerHTML = `<b># ${i + 1}</b>
-              <img src='../public/images/sprites/${
+              <img src='../../public/images/sprites/${
                 pokemons[i]
               }.png' width='100px' height='100px'>
               <p>${pokemons[i]}</p>
@@ -48,7 +50,7 @@
             var stuff = string.split(">");
             var extractedID = stuff[1].substring(0, stuff[1].length - 3);
             div.innerHTML = `<b>${extractedID}</b>
-              <img src='../public/images/sprites/${array[i].pokemon}.png' width='100px' height='100px'>
+              <img src='../../public/images/sprites/${array[i].pokemon}.png' width='100px' height='100px'>
               <p>${array[i].pokemon}</p>
               <p>Guessed: ${array[i].timesGuessed} times</p>`;
           }

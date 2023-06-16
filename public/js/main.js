@@ -190,11 +190,11 @@ loginButton.addEventListener("click", () => {
 });
 
 profileButton.addEventListener("click", () => {
-  window.location.href = "/profile/" + auth.currentUser.uid;
+  window.location.href = `/profile/${auth.currentUser.uid}`;
 });
 
 pokedexButton.addEventListener("click", () => {
-  window.location.href = "/pokedex/" + auth.currentUser.uid;
+  window.location.href = `/profile/${auth.currentUser.uid}/pokedex`;
 });
 
 rankingsButton.addEventListener("click", () => {

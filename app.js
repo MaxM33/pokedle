@@ -119,7 +119,7 @@ app.get("/rankings/view", async (req, res) => {
 });
 
 // render user's pokedex page
-app.get("/pokedex/:id", async (req, res, next) => {
+app.get("/profile/:id/pokedex", async (req, res, next) => {
   // user.uid is always a 28 characters string
   if (req.params.id.length == 28) {
     // check if user actually exists
@@ -135,7 +135,7 @@ app.get("/pokedex/:id", async (req, res, next) => {
 });
 
 // get pokedex of requested user
-app.get("/pokedex/:id/get", async (req, res, next) => {
+app.get("/profile/:id/pokedex/view", async (req, res, next) => {
   // user.uid is always a 28 characters string
   if (req.params.id.length == 28) {
     // check if user actually exists
@@ -178,9 +178,9 @@ app.post("/id/:id", async (req, res) => {
       };
       var userRef = Firestore.doc(db, "users", req.params.id);
       Firestore.setDoc(userRef, answer);
-    }
-    // end request-response cycle
-    res.status(200).end();
+      // end request-response cycle
+      res.status(201).end();
+    } else res.status(304).end();
   } else {
     res.status(404).end();
   }
