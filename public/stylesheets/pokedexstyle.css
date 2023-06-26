@@ -6,7 +6,7 @@ body {
 
 html {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/background.webp") no-repeat 50% fixed;
+    url("/public/images/background.webp") no-repeat 50% fixed;
   background-size: cover;
   background-color: #000;
   overflow-y: hidden;

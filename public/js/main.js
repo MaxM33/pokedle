@@ -102,7 +102,7 @@ class AppState {
     var menucontainer = document.getElementById("answer-container");
     var menuoption = document.createElement("DIV");
     menuoption.setAttribute("class", "answer");
-    menuoption.innerHTML = `<img src='../public/images/sprites/${guess[0].name}.png' width='100px' height='100px'>`;
+    menuoption.innerHTML = `<img src='/public/images/sprites/${guess[0].name}.png' width='100px' height='100px'>`;
     for (var prop in guess[1]) {
       if (
         Object.hasOwnProperty.call(guess[1], prop) &&
@@ -125,7 +125,7 @@ class AppState {
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("../../service-worker.js")
+    .register("/service-worker.js")
     .then((serviceWorker) => {
       console.log("Service Worker registered: ", serviceWorker);
     })
@@ -263,7 +263,7 @@ function onVictory(tries, pokename) {
   audio.play();
   setTimeout(() => {
     div.innerHTML = `<div><br><br><br><br><b>Congratulazioni!</b><br><br><br><br></div>
-    <div><b>Era proprio ${pokename}!</b></div><div><img src='../public/images/sprites/${pokename}.png' width='200px' height='200px'>
+    <div><b>Era proprio ${pokename}!</b></div><div><img src='/public/images/sprites/${pokename}.png' width='200px' height='200px'>
     </div><div><br><br><b>E ci sei riuscito in ${tries} tentativo/i</b></div><div><br><br><b>Pensi di poter fare di meglio? Scopriamolo!</b>
     <br><br></div><div><br><a href='/'><button class='victory-button'>Continua</button></a></div>`;
   }, 1500);
@@ -278,7 +278,7 @@ function sendNotification(message) {
     if (permission === "granted") {
       const notification = new Notification("Pokédle", {
         body: message,
-        icon: "../public/images/icon-192x192.png",
+        icon: "/public/images/icon-192x192.png",
       });
     }
   });
@@ -298,7 +298,7 @@ function autocomplete(inp, arr) {
       if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
         b = document.createElement("DIV");
         b.className = "list-option";
-        b.innerHTML = `<img src='../public/images/sprites/${
+        b.innerHTML = `<img src='/public/images/sprites/${
           arr[i]
         }.png' width='60px' height='60px'>
           <strong>${arr[i].substr(0, val.length)}</strong>${arr[i].substr(
