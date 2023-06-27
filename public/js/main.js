@@ -122,7 +122,7 @@ class AppState {
     titles.style.visibility = "visible";
   }
 }
-
+/*
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("/service-worker.js")
@@ -133,7 +133,7 @@ if ("serviceWorker" in navigator) {
       console.error("Error registering the Service Worker: ", error);
     });
 }
-
+*/
 Notification.requestPermission((permission) => {
   if (permission != "granted") {
     console.log("Permission for notifications was not granted.");
