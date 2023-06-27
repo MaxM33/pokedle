@@ -40,6 +40,5 @@ If port 3000 is occupied, you can change the port by editing its value in
 
 ## Future Ideas
 A list of ideas that probably will be implemented in the future:
-- Improve page rendering. Background image is not fully loaded (because of its considerable size) when the HTML is served, resulting in a little stutter;
 - Add a reset button if user is stuck and wants to change the pokemon to guess.
 
