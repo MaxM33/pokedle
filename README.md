@@ -41,4 +41,5 @@ If port 3000 is occupied, you can change the port by editing its value in
 ## Future Ideas
 A list of ideas that probably will be implemented in the future:
 - Add a reset button if user is stuck and wants to change the pokemon to guess.
+- Add Bootstrap to project for all devices compatibility.
 
